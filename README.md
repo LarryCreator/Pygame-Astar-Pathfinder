@@ -9,7 +9,9 @@ COMMANDS:
 
 'P' = If you already set the starting node and the goal, it starts the algorithm.
 
-'R' = Resets the path.
+'R' = Clears the path.
+
+'C' = Clears the obstacles.
 
 Mouse's left button: Creates obstacles.
 
