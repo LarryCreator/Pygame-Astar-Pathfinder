@@ -15,9 +15,9 @@ class node():
         self.color = 'white'
         self.colors = {'white': (255, 255, 255),
                        'black': (0, 0, 0),
-                       'orange': (255, 165, 0),
-                       'red': (255, 40, 0),
                        'blue': (128, 206, 225),
+                       'dark blue': (0, 0, 128),
+                       'orange': (255, 165, 0),
                        'green': (0, 128, 0),
                        'yellow': (255,255,0)}
         self.surface = pygame.Surface((20, 20))
@@ -136,13 +136,13 @@ class node():
         #(If it has been visited and etc.)
         #So it basically gives color to the algorithm
         for i in self.open_set:
-            if i.color != 'green' and i.color != 'blue' and i.color != 'yellow':
-                i.color = 'orange'
+            if i.color != 'green' and i.color != 'orange' and i.color != 'yellow':
+                i.color = 'blue'
         for k in self.closed_set:
             if k.color != 'yellow':
-                k.color = 'red'
+                k.color = 'dark blue'
         self.s_point.color = 'green'
-        self.g_point.color = 'blue'
+        self.g_point.color = 'orange'
         if self.predecessor_list and self.counter > -1:
             if self.predecessor_list[self.counter] != self.s_point:
                 self.predecessor_list[self.counter].color = 'yellow'
@@ -166,7 +166,7 @@ class node():
             if key[pygame.K_s]:
                 for i in self.node_list:
                     if i.position.collidepoint(pygame.mouse.get_pos()):
-                        if i.color != 'blue':
+                        if i.color != 'orange':
                             for g in self.node_list:
                                 if g.color == 'green':
                                     g.color = 'white'
@@ -181,12 +181,16 @@ class node():
                     if i.position.collidepoint(pygame.mouse.get_pos()):
                         if i.color != 'green':
                             for g in self.node_list:
-                                if g.color == 'blue':
+                                if g.color == 'orange':
                                     g.color = 'white'
-                            i.color = 'blue'
+                            i.color = 'orange'
                             self.g_point = i
             elif key[pygame.K_p]:
                 self.is_running = True
+            elif key[pygame.K_c]:
+                for i in self.node_list:
+                    if i.color == 'black':
+                        i.color = 'white'
             elif key[pygame.K_r]:
                 self.found = False
                 self.is_running = False
@@ -197,7 +201,7 @@ class node():
                 self.open_set.clear()
                 self.open_set.append(self.s_point)
                 for i in self.node_list:
-                    if i.color == 'orange' or i.color == 'red' or i.color == 'yellow':
+                    if i.color == 'blue' or i.color == 'dark blue' or i.color == 'yellow':
                         i.color = 'white'
                 # self.s_point = None
                 # self.g_point = None
