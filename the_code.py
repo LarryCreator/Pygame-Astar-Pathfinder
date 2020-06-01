@@ -7,6 +7,7 @@ pygame.init()
 #'G': It works the same way as 's', but it sets the goal node instead.
 #'P' = If you already set the starting node and the goal, it starts the algorithm.
 #'R' = Resets the path.
+#'C' = Clears the obstacles
 #Mouse's left button: Creates obstacles.
 #Mouse's right button: Remove obstacles.
 class node():
