@@ -1,5 +1,5 @@
 # Pygame-Astar-Pathfinder
-My implementation of A* algorithm with pygame.
+A simple implementation of A* algorithm with pygame.
 
 COMMANDS:
 
